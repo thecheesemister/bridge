@@ -1,0 +1,14 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 50px); /* 10 columns */
+    grid-template-rows: repeat(10, 50px); /* 10 rows */
+    gap: 1px; /* Space between cells */
+    background-color: black; /* Black lines */
+    width: max-content;
+}
+
+.grid-item {
+    width: 50px;
+    height: 50px;
+    background-color: white; /* Grid cell color */
+}
