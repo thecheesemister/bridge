@@ -1,29 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
     const gridContainer = document.getElementById("grid");
-    const columns = 10; // Number of grid lines (adjustable)
-    const rows = Math.ceil(window.innerHeight / (window.innerWidth / columns));
+    const columns = 20; // Number of grid columns
+    const rows = 20; // Number of grid rows
 
-    // Set grid styling dynamically
-    gridContainer.style.display = "grid";
-    gridContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-    gridContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const cellWidth = screenWidth / columns;
+    const cellHeight = screenHeight / rows;
 
-    // Create intersection dots
+    // Create vertical and horizontal grid lines
+    for (let i = 0; i <= columns; i++) {
+        const line = document.createElement("div");
+        line.classList.add("grid-line");
+        line.style.position = "absolute";
+        line.style.left = `${(i / columns) * 100}%`;
+        line.style.top = "0";
+        line.style.width = "1px";
+        line.style.height = "100%";
+        gridContainer.appendChild(line);
+    }
+    for (let i = 0; i <= rows; i++) {
+        const line = document.createElement("div");
+        line.classList.add("grid-line");
+        line.style.position = "absolute";
+        line.style.top = `${(i / rows) * 100}%`;
+        line.style.left = "0";
+        line.style.height = "1px";
+        line.style.width = "100%";
+        gridContainer.appendChild(line);
+    }
+
+    // Create clickable intersection dots
     for (let r = 0; r <= rows; r++) {
         for (let c = 0; c <= columns; c++) {
             const dot = document.createElement("div");
             dot.classList.add("dot");
 
-            // Position the dot at intersections
-            dot.style.left = `${(c / columns) * 100}%`;
-            dot.style.top = `${(r / rows) * 100}%`;
+            // Position the dot at intersection points
+            dot.style.left = `${c * cellWidth}px`;
+            dot.style.top = `${r * cellHeight}px`;
 
             // Click to toggle red dot
             dot.addEventListener("click", () => {
                 dot.classList.toggle("active");
             });
 
-            gridContainer.appendChild(dot);
+            document.body.appendChild(dot);
         }
     }
 });
