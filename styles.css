@@ -18,9 +18,21 @@ body, html {
     width: 100vw;
     height: 100vh;
     background-color: black;
+    position: relative;
 }
 
-.grid-item {
-    background-color: white;
-    border: 1px solid black; /* Black lines between cells */
+/* Styling for the clickable intersection points */
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+/* The red dot when clicked */
+.dot.active {
+    background-color: red;
 }
