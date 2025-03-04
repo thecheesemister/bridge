@@ -10,17 +10,17 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black; /* Black background to match grid lines */
+    background-color: black;
 }
 
 .grid-container {
     display: grid;
     width: 100vw;
     height: 100vh;
-    gap: 0.5px; /* Smaller spacing */
     background-color: black;
 }
 
 .grid-item {
     background-color: white;
+    border: 1px solid black; /* Black lines between cells */
 }
